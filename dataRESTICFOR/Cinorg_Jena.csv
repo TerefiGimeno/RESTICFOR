@@ -1,0 +1,37 @@
+Sample name,SN2,BoxNo,BoxPos,Sample year,Number,Parameter,Result,Unit,Instrument,Meas.date,Weight_mg,Muffle furnace,Comment
+SF4A_LONG_P1,10-20 cm,39,A1,2025,13710,Cinorg,0.02,percentage,Elementaranalyse VarioMAX cube,15/12/2025,250.42,Y,NA
+SF4A_LONG_P3,0-10 cm,39,A2,2025,13711,Cinorg,NA,percentage,Elementaranalyse VarioMAX cube,15/12/2025,253.88,Y,Cu and under range
+SF4B_LONG_P1,0-10 cm,39,A3,2025,13712,Cinorg,NA,percentage,Elementaranalyse VarioMAX cube,15/12/2025,253.36,Y,Cu and under range
+SF4B_LONG_P3,10-20 cm,39,A4,2025,13713,Cinorg,NA,percentage,Elementaranalyse VarioMAX cube,15/12/2025,249.29,Y,Cu and under range
+SF7_LONG_P1,10-20 cm,39,A5,2025,13714,Cinorg,NA,percentage,Elementaranalyse VarioMAX cube,15/12/2025,250.26,Y,Cu and under range
+SF7_LONG_P2,0-10 cm,39,A6,2025,13715,Cinorg,NA,percentage,Elementaranalyse VarioMAX cube,15/12/2025,250.66,Y,Cu and under range
+SF1_PAST_P2,0-10 cm,39,A7,2025,13716,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,252.43,Y,NA
+SF1_PAST_P3,10-20 cm,39,A8,2025,13717,Cinorg,NA,percentage,Elementaranalyse VarioMAX cube,15/12/2025,254.19,Y,Cu and under range
+SF6_PAST_P1,10-20 cm,39,A9,2025,13718,Cinorg,NA,percentage,Elementaranalyse VarioMAX cube,15/12/2025,246.25,Y,Cu and under range
+SF6_PAST_P2,0-10 cm,39,A10,2025,13719,Cinorg,NA,percentage,Elementaranalyse VarioMAX cube,15/12/2025,253.57,Y,Cu and under range
+SF7_PAST_P1,0-10 cm,39,B1,2025,13720,Cinorg,NA,percentage,Elementaranalyse VarioMAX cube,15/12/2025,252.94,Y,Cu and under range
+SF7_PAST_P3,10-20 cm,39,B2,2025,13721,Cinorg,NA,percentage,Elementaranalyse VarioMAX cube,15/12/2025,254.26,Y,Cu and under range
+SET15_LONG_P1,0-10 cm,39,B3,2025,13722,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,251.83,Y,NA
+SET15_LONG_P2,10-20 cm,39,B4,2025,13723,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,251.22,Y,NA
+SET16_LONG_P1,0-10 cm,39,B5,2025,13724,Cinorg,0.04,percentage,Elementaranalyse VarioMAX cube,15/12/2025,251.00,Y,NA
+SET16_LONG_P2,10-20 cm,39,B6,2025,13725,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,246.72,Y,NA
+SET18_LONG_P1,10-20 cm,39,B7,2025,13726,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,249.48,Y,NA
+SET18_LONG_P3,0-10 cm,39,B8,2025,13727,Cinorg,0.02,percentage,Elementaranalyse VarioMAX cube,15/12/2025,252.00,Y,NA
+SET6A_PAST_P2,0-10 cm,39,B9,2025,13728,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,248.02,Y,NA
+SET6A_PAST_P2,10-20 cm,39,B10,2025,13729,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,248.87,Y,NA
+SET6B_PAST_P1,0-10 cm,39,C1,2025,13730,Cinorg,0.06,percentage,Elementaranalyse VarioMAX cube,15/12/2025,251.37,Y,NA
+SET6B_PAST_P3,10-20 cm,39,C2,2025,13731,Cinorg,0.05,percentage,Elementaranalyse VarioMAX cube,15/12/2025,251.09,Y,NA
+SET6C_PAST_P2,0-10 cm,39,C3,2025,13732,Cinorg,0.05,percentage,Elementaranalyse VarioMAX cube,15/12/2025,253.68,Y,NA
+SET6C_PAST_P2,10-20 cm,39,C4,2025,13733,Cinorg,0.04,percentage,Elementaranalyse VarioMAX cube,15/12/2025,254.05,Y,NA
+CT5A_LONG_P2,10-20 cm,39,C5,2025,13734,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,250.73,Y,NA
+CT5A_LONG_P3,0-10 cm,39,C6,2025,13735,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,251.06,Y,NA
+CT5B_LONG_P2,0-10 cm,39,C7,2025,13736,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,253.11,Y,NA
+CT5B_LONG_P2,10-20 cm,39,C8,2025,13737,Cinorg,0.02,percentage,Elementaranalyse VarioMAX cube,15/12/2025,251.07,Y,NA
+CT9_LONG_P2,0-10 cm,39,C9,2025,13738,Cinorg,0.02,percentage,Elementaranalyse VarioMAX cube,15/12/2025,247.36,Y,NA
+CT9_LONG_P3,10-20 cm,39,C10,2025,13739,Cinorg,NA,percentage,Elementaranalyse VarioMAX cube,15/12/2025,253.53,Y,Cu and under range
+CT1A_PAST_P1,10-20 cm,39,D1,2025,13740,Cinorg,0.02,percentage,Elementaranalyse VarioMAX cube,15/12/2025,253.67,Y,NA
+CT1A_PAST_P3,0-10 cm,39,D2,2025,13741,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,253.04,Y,NA
+CT2_PAST_P1,0-10 cm,39,D3,2025,13742,Cinorg,0.02,percentage,Elementaranalyse VarioMAX cube,15/12/2025,249.85,Y,NA
+CT2_PAST_P2,10-20 cm,39,D4,2025,13743,Cinorg,0.01,percentage,Elementaranalyse VarioMAX cube,15/12/2025,253.76,Y,NA
+CT3_PAST_P1,10-20 cm,39,D5,2025,13744,Cinorg,0.01,percentage,Elementaranalyse VarioMAX cube,15/12/2025,252.64,Y,NA
+CT3_PAST_P2,0-10 cm,39,D6,2025,13745,Cinorg,0.03,percentage,Elementaranalyse VarioMAX cube,15/12/2025,248.65,Y,NA
