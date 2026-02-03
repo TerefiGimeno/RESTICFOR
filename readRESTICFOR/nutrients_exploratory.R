@@ -48,7 +48,7 @@ jena <- jena %>%
   mutate(lg_Ctotal = log(Ctotal)) %>% 
   mutate(lg_Ntotal = log(Ntotal))
 
-m_Ctotal <- lme4::lmer(lg_Ctotal ~ site * type * depth + (1|site:plot),
+m_Ctotal <- lme4::lmer(log(Ctotal) ~ site * type * depth + (1|site:plot),
                        data = jena)
 #always run this before using Anova():
 options(contrasts = c("contr.helmert", "contr.poly"))
@@ -59,6 +59,10 @@ car::Anova(m_Ctotal)
 r.squaredGLMM(m_Ctotal)
 check_model(m_Ctotal)
 emmeans(m_Ctotal, pairwise ~ site*type)
+emmeans(m_Ctotal, pairwise ~ site)
+plot_model(m_Ctotal, type="pred", terms=c("site"))
+plot_model(m_Ctotal, type="pred", terms=c("type"))
+plot_model(m_Ctotal, type="pred", terms=c("site", "type"))
 plot_model(m_Ctotal, type="pred", terms=c("site", "type", "depth"))
 
 #check overdispersion:
@@ -72,7 +76,7 @@ overdisp_fun <- function(model) {
 }
 overdisp_fun(m_Ctotal) #there is overdispersion when: ratio > 1
 
-m_Ntotal <- lme4::lmer(lg_Ntotal ~ site * type * depth + (1|site:plot),
+m_Ntotal <- lme4::lmer(log(Ntotal*10) ~ site * type * depth + (1|site:plot),
                        data = jena)
 
 summary(m_Ntotal)
@@ -81,6 +85,8 @@ car::Anova(m_Ntotal)
 r.squaredGLMM(m_Ntotal)
 check_model(m_Ntotal)
 emmeans(m_Ntotal, pairwise ~ site*type)
+emmeans(m_Ntotal, pairwise ~ site)
+plot_model(m_Ntotal, type="pred", terms=c("site"))
 plot_model(m_Ntotal, type="pred", terms=c("site", "type", "depth"))
 overdisp_fun(m_Ntotal)
 
