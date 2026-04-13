@@ -1,0 +1,31 @@
+﻿plotID,spp1_identity,spp1_cover_perc,spp2_identity,spp2_cover_perc,spp3_identity,spp3_cover_perc,spp4_identity,spp4_cover,spp5_identity,spp5_cover
+CT_17_LONG,Quercus ilex ,5,NA,NA,NA,NA,NA,NA,NA,NA
+CT_1A_PAST,Quercus ilex ,35,NA,NA,NA,NA,NA,NA,NA,NA
+CT_1B_PAST,Quercus ilex ,20,Erica scoparia,NA,Rosa sp,NA,NA,NA,NA,NA
+CT_2_PAST,Quercus ilex ,8,Rubus ulmifolius,10,Rhamnus alaternus,1,NA,NA,NA,NA
+CT_3_PAST,Quercus ilex ,35,Clematis sp,10,NA,NA,NA,NA,NA,NA
+CT_5A_LONG,Quercus ilex ,10,Quercus coccifera,1,NA,NA,NA,NA,NA,NA
+CT_5B_LONG,Quercus ilex ,25,NA,NA,NA,NA,NA,NA,NA,NA
+CT_6_LONG,Quercus ilex ,10,Juniperus,2,NA,NA,NA,NA,NA,NA
+CT_6_PAST,Quercus ilex ,20,Rubus,20,Celtis sp,20,Ulmus sp,20,NA,NA
+CT_9_LONG,Quercus ilex ,5,Erica sp,5,Crataegus monogyna,3,NA,NA,NA,NA
+SET_6A_PAST,Rubus sp,15,Juniperus communis,1,Genista sp,5,NA,NA,NA,NA
+SET_6B_PAST,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+SET_6C_PAST,Juniperus communis,3,Genista sp,5,NA,NA,NA,NA,NA,NA
+SET_9_LONG,Juniperus sp,20,NA,NA,NA,NA,NA,NA,NA,NA
+SET_13_PAST,Juniperus sp,8,Rhododendron sp,2,Buxus sp,1,Pinus uncinata,3,NA,NA
+SET_14_PAST,Pinus uncinata,5,Juniperus sp,1,Rhododendron sp,1,NA,NA,NA,NA
+SET_15_LONG,Ilex sp,1,NA,NA,NA,NA,NA,NA,NA,NA
+SET_16_LONG,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+SET_16B_LONG,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+SET_18_LONG,Rhododendron sp,60,Vaccinium sp,30-40,NA,NA,NA,NA,NA,NA
+SF_1_PAST,Ilex sp,5,NA,NA,NA,NA,NA,NA,NA,NA
+SF_4A_LONG,Fagus sylvatica,3,NA,NA,NA,NA,NA,NA,NA,NA
+SF_4B_LONG,Fagus sylvatica,1,NA,NA,NA,NA,NA,NA,NA,NA
+SF_5_LONG,Erica sp,20,NA,NA,NA,NA,NA,NA,NA,NA
+SF_5_PAST,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+SF_6_PAST,Ilex aquifolium,20,Fagus sylvatica,5,NA,NA,NA,NA,NA,NA
+SF_7_LONG,Fagus sylvatica,10,Erica sp,40,Juniperus sp,5,NA,NA,NA,NA
+SF_7_PAST,Fagus sylvatica,3,Juniperus sp,1,Ilex sp,4,NA,NA,NA,NA
+SF_8_LONG,Fagus sylvatica,5,NA,NA,NA,NA,NA,NA,NA,NA
+SF_9_PAST,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

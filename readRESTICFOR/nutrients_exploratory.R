@@ -102,6 +102,11 @@ plot_model(m_ratio, type="pred", terms=c("site", "type", "depth"))
 
 ####3. Read and pre-process d15N data####
 
+d15N_pre <- read.csv("dataRESTICFOR/d15N_soils.csv") %>% 
+  group_by(Muestra) %>% 
+  summarise(Nperc = mean(N_perc, na.rm = T),
+            d15N_permil = mean(d15N_permil_air, na.rm = T))
+
 d15N <- read.csv("dataRESTICFOR/d15N_soils.csv") %>% 
   separate(Muestra, into = c("site", "crap", "crap2"), sep = "-") %>%
   separate(crap2, into = c("type", "point"), sep = "_") %>% 
