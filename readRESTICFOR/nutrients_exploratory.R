@@ -1,4 +1,4 @@
-####1. read the data from Jena####
+####0. Load libraries####
 
 library(tidyverse)
 library(lme4)
@@ -20,6 +20,8 @@ library(lmerTest)
 library(ggsignif)
 library(broom.mixed)
 library(patchwork)
+
+####1. read the data from Jena####
 
 jena <- read.csv("dataRESTICFOR/Ctotal_Ntotal_Jena.csv") %>% 
   select(c(Sample.name, SN2, Parameter, Result)) %>%
@@ -104,7 +106,7 @@ plot_model(m_ratio, type="pred", terms=c("site", "type", "depth"))
 
 d15N_pre <- read.csv("dataRESTICFOR/d15N_soils.csv") %>% 
   group_by(Muestra) %>% 
-  summarise(Nperc = mean(N_perc, na.rm = T),
+  summarize(Nperc = mean(N_perc, na.rm = T),
             d15N_permil = mean(d15N_permil_air, na.rm = T))
 
 d15N <- read.csv("dataRESTICFOR/d15N_soils.csv") %>% 
