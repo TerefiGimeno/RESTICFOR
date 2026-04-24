@@ -52,6 +52,9 @@ jena <- jena %>%
 
 m_Ctotal <- lme4::lmer(log(Ctotal) ~ site * type * depth + (1|site:plot),
                        data = jena)
+#quick dirty analysis for just the upper depth
+m_Ctotal_sub <- lme4::lmer(log(Ctotal) ~ site * type + (1|site:plot),
+                       data = subset(jena, depth == "0-10 cm"))
 #always run this before using Anova():
 options(contrasts = c("contr.helmert", "contr.poly"))
 
@@ -69,6 +72,15 @@ plot_model(m_Ctotal, type="pred", terms=c("type"))
 plot_model(m_Ctotal, type="pred", terms=c("site", "type"))
 plot_model(m_Ctotal, type="pred", terms=c("site", "type", "depth"))
 
+car::Anova(m_Ctotal_sub)
+windows(12, 8)
+check_model(m_Ctotal_sub)
+emmeans(m_Ctotal, pairwise ~ site*type)
+emmeans(m_Ctotal, pairwise ~ site)
+plot_model(m_Ctotal_sub, type="pred", terms=c("site"))
+plot_model(m_Ctotal_sub, type="pred", terms=c("type"))
+plot_model(m_Ctotal_sub, type="pred", terms=c("site", "type"))
+
 #check overdispersion:
 overdisp_fun <- function(model) {
   rdf <- df.residual(model)
@@ -82,17 +94,29 @@ overdisp_fun(m_Ctotal) #there is overdispersion when: ratio > 1
 
 m_Ntotal <- lme4::lmer(log(Ntotal*10) ~ site * type * depth + (1|site:plot),
                        data = jena)
+#quick dirty analysis for just the upper depth
+m_Ntotal_sub <- lme4::lmer(log(Ntotal) ~ site * type + (1|site:plot),
+                           data = subset(jena, depth == "0-10 cm"))
 
 summary(m_Ntotal)
 anova(m_Ntotal)
 car::Anova(m_Ntotal)
 r.squaredGLMM(m_Ntotal)
 check_model(m_Ntotal)
-emmeans(m_Ntotal, pairwise ~ site*type)
-emmeans(m_Ntotal, pairwise ~ site)
-plot_model(m_Ntotal, type="pred", terms=c("site"))
-plot_model(m_Ntotal, type="pred", terms=c("site", "type", "depth"))
+emmeans(m_Ntotal_sub, pairwise ~ site*type)
+emmeans(m_Ntotal_sub, pairwise ~ site)
+plot_model(m_Ntotal_sub, type="pred", terms=c("site"))
+plot_model(m_Ntotal_sub, type="pred", terms=c("site", "type"))
 overdisp_fun(m_Ntotal)
+
+car::Anova(m_Ntotal_sub)
+windows(12, 8)
+check_model(m_Ctotal_sub)
+emmeans(m_Ntotal_sub, pairwise ~ site*type)
+emmeans(m_Ctotal_sub, pairwise ~ site)
+plot_model(m_Ntotal_sub, type="pred", terms=c("site"))
+plot_model(m_Ctotal_sub, type="pred", terms=c("type"))
+plot_model(m_Ctotal_sub, type="pred", terms=c("site", "type"))
 
 m_ratio <- lme4::lmer(CN_ratio ~ site * type * depth + (1|site:plot),
                       data = jena)
@@ -192,3 +216,41 @@ C_total_comp <-
   xlab("[C] (%) IRNAS") +
   ylab("[C] (%) Jena")
 
+####6. Analyses of total C from soil samples 0-20 (IRNAS)####
+
+####7. Graphs####
+
+C_0to10cm_graph <-
+  ggplot(subset(jena, depth == "0-10 cm"),
+         aes(x = site, y = log(Ctotal), fill = type)) +
+  geom_boxplot(aes(fill = type), width = 0.7) +
+  xlab(" ") +
+  ylab("Lg Total C (%)") +
+  theme(panel.grid = element_blank(),
+        panel.background = element_blank(),
+        text = element_text(size = 21),
+        axis.line = element_line(color="grey30"),
+        axis.ticks.y = element_line(color="black"),
+        axis.ticks.x =element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_text(vjust = 0.5, size=20),
+        plot.margin = margin(1,0,0,0, "cm")) 
+
+N_0to10cm_graph <-
+  ggplot(subset(jena, depth == "0-10 cm"),
+         aes(x = site, y = log(Ntotal), fill = type)) +
+  geom_boxplot(aes(fill = type), width = 0.7) +
+  xlab(" ") +
+  ylab("Lg Total N (%)") +
+  theme(panel.grid = element_blank(),
+        panel.background = element_blank(),
+        text = element_text(size = 21),
+        axis.line = element_line(color="grey30"),
+        axis.ticks.y = element_line(color="black"),
+        axis.ticks.x =element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_text(vjust = 0.5, size=20),
+        plot.margin = margin(1,0,0,0, "cm")) 
+
+windows(12, 8)
+cowplot::plot_grid(C_0to10cm_graph, N_0to10cm_graph)
