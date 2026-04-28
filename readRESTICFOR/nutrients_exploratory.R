@@ -238,10 +238,10 @@ C_0to10cm_graph <-
 
 N_0to10cm_graph <-
   ggplot(subset(jena, depth == "0-10 cm"),
-         aes(x = site, y = log(Ntotal), fill = type)) +
+         aes(x = site, y = Ntotal, fill = type)) +
   geom_boxplot(aes(fill = type), width = 0.7) +
   xlab(" ") +
-  ylab("Lg Total N (%)") +
+  ylab("Soil [N] (%)") +
   theme(panel.grid = element_blank(),
         panel.background = element_blank(),
         text = element_text(size = 21),
@@ -254,3 +254,35 @@ N_0to10cm_graph <-
 
 windows(12, 8)
 cowplot::plot_grid(C_0to10cm_graph, N_0to10cm_graph)
+
+ggplot(d15N, aes(x = type, y = Nperc, fill = type)) +
+  geom_boxplot()+
+  facet_wrap(~site)+
+  scale_fill_manual(values = c("#3D513D", "#FFDA7D"))+
+  xlab(" ") +
+  ylab("Soil [N] (%)") +
+  theme(panel.grid = element_blank(),
+        panel.background = element_blank(),
+        text = element_text(size = 21),
+        axis.line = element_line(color="grey30"),
+        axis.ticks.y = element_line(color="black"),
+        axis.ticks.x =element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_text(vjust = 0.5, size=20),
+        plot.margin = margin(1,0,0,0, "cm"))
+
+ggplot(d15N, aes(x = type, y = d15N_permil, fill = type)) +
+  geom_boxplot()+
+  facet_wrap(~site)+
+  scale_fill_manual(values = c("#3D513D", "#FFDA7D"))+
+  xlab(" ") +
+  ylab(expression(delta^15 * "N (\u2030)")) +
+  theme(panel.grid = element_blank(),
+        panel.background = element_blank(),
+        text = element_text(size = 21),
+        axis.line = element_line(color="grey30"),
+        axis.ticks.y = element_line(color="black"),
+        axis.ticks.x =element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_text(vjust = 0.5, size=20),
+        plot.margin = margin(1,0,0,0, "cm"))
