@@ -159,6 +159,7 @@ plot_model(m_ratio, type="pred", terms=c("site", "type", "depth"))
 ####3. Read and pre-process d15N data####
 
 d15N <- read.csv("dataRESTICFOR/d15N_soils.csv") %>% 
+  #some samples were measured twice
   group_by(Muestra) %>% 
   summarize(Nperc = mean(N_perc, na.rm = T),
             d15N_permil = mean(d15N_permil_air, na.rm = T)) %>% 
@@ -248,21 +249,33 @@ C_total_comp <-
 
 ####7. Graphs####
 
-C_0to10cm_graph <-
-  ggplot(subset(jena, depth == "0-10 cm"),
-         aes(x = site, y = log(Ctotal), fill = type)) +
-  geom_boxplot(aes(fill = type), width = 0.7) +
+jena$site <- recode_factor(jena$site, CT = "Quercus ilex",
+                           SET = "Pinus uncinata", SF = "Fagus sylvatica")
+jena$site <- factor(jena$site, levels = c("Quercus ilex", "Fagus sylvatica",
+                                          "Pinus uncinata"))
+jena$type <- recode_factor(jena$type, LONG = "Long", PAST = "Recent")
+
+windows(16, 8)
+C_jena_0to10 <- ggplot(subset(jena, depth == "0-10 cm"),
+                       aes(x = type, y = Ctotal, fill = type)) +
+  geom_boxplot()+
+  facet_wrap(~site)+
+  scale_fill_manual(values = c("#698B69", "#FFDA7D"))+
   xlab(" ") +
-  ylab("Lg Total C (%)") +
+  #ylab("Soil [C] (%)") +
   theme(panel.grid = element_blank(),
+        legend.position = "none",
         panel.background = element_blank(),
         text = element_text(size = 21),
+        strip.text = element_text(face = "italic"),
         axis.line = element_line(color="grey30"),
         axis.ticks.y = element_line(color="black"),
-        axis.ticks.x =element_blank(),
+        #axis.text.x = element_blank(),
+        axix.text.y = element_blank(),
         axis.title.x = element_blank(),
-        axis.title.y = element_text(vjust = 0.5, size=20),
-        plot.margin = margin(1,0,0,0, "cm")) 
+        axis.title.y = element_blank(),
+        #axis.title.y = element_text(vjust = 0.5, size=20),
+        plot.margin = margin(1,0,0,0, "cm"))
 
 N_0to10cm_graph <-
   ggplot(subset(jena, depth == "0-10 cm"),
@@ -283,34 +296,52 @@ N_0to10cm_graph <-
 windows(12, 8)
 cowplot::plot_grid(C_0to10cm_graph, N_0to10cm_graph)
 
-ggplot(d15N, aes(x = type, y = Nperc, fill = type)) +
+d15N$type <- recode_factor(d15N$type, LONG = "Long", PAST = "Recent")
+d15N$site <- recode_factor(d15N$site, CT = "Quercus ilex",
+                          SET = "Pinus uncinata", SF = "Fagus sylvatica")
+d15N$site <- factor(d15N$site, levels = c("Quercus ilex", "Fagus sylvatica", 
+                                          "Pinus uncinata"))
+
+windows(20, 9)
+Ngraph<- ggplot(d15N, aes(x = type, y = Nperc, fill = type)) +
   geom_boxplot()+
   facet_wrap(~site)+
-  scale_fill_manual(values = c("#3D513D", "#FFDA7D"))+
+  scale_fill_manual(values = c("#698B69", "#FFDA7D"))+
   xlab(" ") +
-  ylab("Soil [N] (%)") +
+  #ylab("Soil [N] (%)") +
   theme(panel.grid = element_blank(),
+        legend.position = "none",
         panel.background = element_blank(),
         text = element_text(size = 21),
+        strip.text = element_text(face = "italic"),
         axis.line = element_line(color="grey30"),
         axis.ticks.y = element_line(color="black"),
-        axis.ticks.x =element_blank(),
+        axis.text.x = element_blank(),
+        axix.text.y = element_blank(),
+        #axis.ticks.x =element_blank(),
         axis.title.x = element_blank(),
-        axis.title.y = element_text(vjust = 0.5, size=20),
+        #axis.title.y = element_text(vjust = 0.5, size=20),
+        axis.title.y = element_blank(),
         plot.margin = margin(1,0,0,0, "cm"))
 
-ggplot(d15N, aes(x = type, y = d15N_permil, fill = type)) +
+d15Ngraph <- ggplot(d15N, aes(x = type, y = d15N_permil, fill = type)) +
   geom_boxplot()+
   facet_wrap(~site)+
-  scale_fill_manual(values = c("#3D513D", "#FFDA7D"))+
+  scale_fill_manual(values = c("#698B69", "#FFDA7D"))+
   xlab(" ") +
-  ylab(expression(delta^15 * "N (\u2030)")) +
+  #ylab(expression(delta^15 * "N (\u2030)")) +
   theme(panel.grid = element_blank(),
+        legend.position = "none",
         panel.background = element_blank(),
         text = element_text(size = 21),
+        strip.text = element_blank(),
         axis.line = element_line(color="grey30"),
         axis.ticks.y = element_line(color="black"),
-        axis.ticks.x =element_blank(),
+        #axis.ticks.x =element_blank(),
         axis.title.x = element_blank(),
-        axis.title.y = element_text(vjust = 0.5, size=20),
+        #axis.title.y = element_text(vjust = 0.5, size=20),
+        axis.title.y = element_blank(),
         plot.margin = margin(1,0,0,0, "cm"))
+
+windows(16, 8)
+cowplot::plot_grid(Ngraph, d15Ngraph, nrow =2)
