@@ -49,12 +49,19 @@ hist(jena$CN_ratio)
 jena <- jena %>% 
   mutate(lg_Ctotal = log(Ctotal)) %>% 
   mutate(lg_Ntotal = log(Ntotal))
+#####2.1 analyses of C from Jena#####
 
 m_Ctotal <- lme4::lmer(log(Ctotal) ~ site * type * depth + (1|site:plot),
                        data = jena)
 #quick dirty analysis for just the upper depth
 m_Ctotal_sub <- lme4::lmer(log(Ctotal) ~ site * type + (1|site:plot),
                        data = subset(jena, depth == "0-10 cm"))
+#without log transforming
+m_Ctotal_raw <- lme4::lmer(Ctotal ~ site * type * depth + (1|site:plot),
+                       data = jena)
+#quick dirty analysis for just the upper depth
+m_Ctotal_sub_raw <- lme4::lmer(Ctotal ~ site * type + (1|site:plot),
+                           data = subset(jena, depth == "0-10 cm"))
 #always run this before using Anova():
 options(contrasts = c("contr.helmert", "contr.poly"))
 
@@ -68,18 +75,37 @@ emmeans(m_Ctotal, pairwise ~ site*type)
 emmeans(m_Ctotal, pairwise ~ site*type*depth)
 emmeans(m_Ctotal, pairwise ~ site)
 plot_model(m_Ctotal, type="pred", terms=c("site"))
-plot_model(m_Ctotal, type="pred", terms=c("type"))
-plot_model(m_Ctotal, type="pred", terms=c("site", "type"))
-plot_model(m_Ctotal, type="pred", terms=c("site", "type", "depth"))
+plot_model(m_Ctotal_raw, type="pred", terms=c("type"))
+plot_model(m_Ctotal_raw, type="pred", terms=c("site", "type"))
+plot_model(m_Ctotal_raw, type="pred", terms=c("site", "type", "depth"))
 
 car::Anova(m_Ctotal_sub)
 windows(12, 8)
 check_model(m_Ctotal_sub)
-emmeans(m_Ctotal, pairwise ~ site*type)
-emmeans(m_Ctotal, pairwise ~ site)
+emmeans(m_Ctotal_sub, pairwise ~ site*type)
+emmeans(m_Ctotal_sub, pairwise ~ site)
 plot_model(m_Ctotal_sub, type="pred", terms=c("site"))
 plot_model(m_Ctotal_sub, type="pred", terms=c("type"))
 plot_model(m_Ctotal_sub, type="pred", terms=c("site", "type"))
+
+car::Anova(m_Ctotal_raw)
+windows(12, 8)
+check_model(m_Ctotal_raw)
+emmeans(m_Ctotal_raw, pairwise ~ site*type)
+emmeans(m_Ctotal_raw, pairwise ~ site)
+plot_model(m_Ctotal_sub_raw, type="pred", terms=c("site"))
+plot_model(m_Ctotal_sub_raw, type="pred", terms=c("type"))
+plot_model(m_Ctotal_sub_raw, type="pred", terms=c("site", "type", "depth"))
+
+
+car::Anova(m_Ctotal_sub_raw)
+windows(12, 8)
+check_model(m_Ctotal_sub_raw)
+emmeans(m_Ctotal_sub_raw, pairwise ~ site*type)
+emmeans(m_Ctotal_sub_raw, pairwise ~ site)
+plot_model(m_Ctotal_sub_raw, type="pred", terms=c("site"))
+plot_model(m_Ctotal_sub_raw, type="pred", terms=c("type"))
+plot_model(m_Ctotal_sub_raw, type="pred", terms=c("site", "type"))
 
 #check overdispersion:
 overdisp_fun <- function(model) {
@@ -92,6 +118,7 @@ overdisp_fun <- function(model) {
 }
 overdisp_fun(m_Ctotal) #there is overdispersion when: ratio > 1
 
+#####2.2 analyses of N from Jena#####
 m_Ntotal <- lme4::lmer(log(Ntotal*10) ~ site * type * depth + (1|site:plot),
                        data = jena)
 #quick dirty analysis for just the upper depth
@@ -103,9 +130,9 @@ anova(m_Ntotal)
 car::Anova(m_Ntotal)
 r.squaredGLMM(m_Ntotal)
 check_model(m_Ntotal)
-emmeans(m_Ntotal_sub, pairwise ~ site*type)
+emmeans(m_Ntotal, pairwise ~ site*type)
 emmeans(m_Ntotal_sub, pairwise ~ site)
-plot_model(m_Ntotal_sub, type="pred", terms=c("site"))
+plot_model(m_Ntotal, type="pred", terms=c("site"))
 plot_model(m_Ntotal_sub, type="pred", terms=c("site", "type"))
 overdisp_fun(m_Ntotal)
 
@@ -115,9 +142,10 @@ check_model(m_Ctotal_sub)
 emmeans(m_Ntotal_sub, pairwise ~ site*type)
 emmeans(m_Ctotal_sub, pairwise ~ site)
 plot_model(m_Ntotal_sub, type="pred", terms=c("site"))
-plot_model(m_Ctotal_sub, type="pred", terms=c("type"))
-plot_model(m_Ctotal_sub, type="pred", terms=c("site", "type"))
+plot_model(m_Ntotal_sub, type="pred", terms=c("type"))
+plot_model(m_Ntotal_sub, type="pred", terms=c("site", "type"))
 
+#####2.3. analyses of C:N ratio#####
 m_ratio <- lme4::lmer(CN_ratio ~ site * type * depth + (1|site:plot),
                       data = jena)
 
