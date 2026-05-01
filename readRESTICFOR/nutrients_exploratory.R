@@ -322,7 +322,7 @@ Ngraph<- ggplot(d15N, aes(x = type, y = Nperc, fill = type)) +
         axis.title.x = element_blank(),
         #axis.title.y = element_text(vjust = 0.5, size=20),
         axis.title.y = element_blank(),
-        plot.margin = margin(1,0,0,0, "cm"))
+        plot.margin = margin(1,1,0,0, "cm"))
 
 d15Ngraph <- ggplot(d15N, aes(x = type, y = d15N_permil, fill = type)) +
   geom_boxplot()+
@@ -341,7 +341,7 @@ d15Ngraph <- ggplot(d15N, aes(x = type, y = d15N_permil, fill = type)) +
         axis.title.x = element_blank(),
         #axis.title.y = element_text(vjust = 0.5, size=20),
         axis.title.y = element_blank(),
-        plot.margin = margin(1,0,0,0, "cm"))
+        plot.margin = margin(1,1,0,0, "cm"))
 
 windows(16, 8)
 cowplot::plot_grid(Ngraph, d15Ngraph, nrow =2)
