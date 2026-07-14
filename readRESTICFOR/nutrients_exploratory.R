@@ -176,6 +176,7 @@ hist(d15N$d15N_permil)
 
 N_conc_plot <- 
   ggplot(d15N, aes(x = site, y = Nperc, fill = type)) +
+  geom_jitter(color="black", size=0.4, alpha=0.9) +
   geom_boxplot() +
   xlab("") +
   ylab("[N] (%)")
@@ -197,6 +198,7 @@ plot_model(m_N_sai, type="pred", terms=c("site", "type"))
 
 d15N_plot <- 
   ggplot(d15N, aes(x = site, y = d15N_permil, fill = type)) +
+  geom_jitter(color="black", size= 1) +
   geom_boxplot() +
   xlab("") +
   ylab(expression(delta^15 * "N (\u2030)"))
@@ -318,6 +320,7 @@ windows(20, 9)
 
 Ngraph<- ggplot(d15N, aes(x = type, y = Nperc, fill = type)) +
   geom_boxplot() +
+  geom_jitter(color="black", size=1)+
   facet_wrap(~site) +
   scale_fill_manual(values = c("#698B69", "#FFDA7D")) +
   xlab(" ") +
@@ -346,6 +349,7 @@ Ngraph<- ggplot(d15N, aes(x = type, y = Nperc, fill = type)) +
 
 d15Ngraph <- ggplot(d15N, aes(x = type, y = d15N_permil, fill = type))  +
   geom_boxplot() +
+  geom_jitter(color="black", size=1) +
   facet_wrap(~site) +
   scale_fill_manual(values = c("#698B69", "#FFDA7D")) +
   xlab(" ") +
